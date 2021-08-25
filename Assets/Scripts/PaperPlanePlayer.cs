@@ -33,7 +33,13 @@ public class PaperPlanePlayer : MonoBehaviour
 
     public void actionJumpSingle()
     {
-        Vector2 vel = transform.up * (50f);
+        Vector2 vel = transform.up * (100f);
+        rb.AddForce(vel);
+    }
+
+    public void actionFallSingle()
+    {
+        Vector2 vel = transform.up * (-1) * (100f);
         rb.AddForce(vel);
     }
 
