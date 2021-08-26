@@ -24,11 +24,23 @@ public class PaperPlanePlayer : MonoBehaviour
     void Update()
     {
         //pruebas de fisicas de empuje hacia arriba
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Vector2 vel = transform.up * (5f);
-            rb.AddForce(vel);
-        }
+        //if (Input.GetKey(KeyCode.Space))
+        //{
+        //    Vector2 vel = transform.up * (5f);
+        //    rb.AddForce(vel);
+        //}
+    }
+
+    public void actionJumpSingle()
+    {
+        Vector2 vel = transform.up * (100f);
+        rb.AddForce(vel);
+    }
+
+    public void actionFallSingle()
+    {
+        Vector2 vel = transform.up * (-1) * (100f);
+        rb.AddForce(vel);
     }
 
     private void FixedUpdate()
