@@ -9,6 +9,12 @@ public class PaperPlanePlayer : MonoBehaviour
     public float maxSpeed;
 
     Rigidbody2D rb;
+    BoxCollider2D bc;
+
+    private bool playerInmune;
+    protected const float inmuneTime = 2.0f;
+    protected float passingTime = inmuneTime;
+    protected bool enemyInmune = false;
 
     public float rotationControl;
 
@@ -18,6 +24,8 @@ public class PaperPlanePlayer : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
+        passingTime = 0;
     }
 
     // Update is called once per frame
@@ -43,6 +51,15 @@ public class PaperPlanePlayer : MonoBehaviour
         rb.AddForce(vel);
     }
 
+    public void actionFallingFree()
+    {
+        Vector2 velFalling = transform.up * (-1) * (rb.velocity.y);
+        rb.AddForce(velFalling);
+        Vector2 vel = transform.up * (-1) * (100f);
+        rb.AddForce(vel);
+        
+    }
+
     private void FixedUpdate()
     {
         //velocidad constante hacia adelante
@@ -50,5 +67,47 @@ public class PaperPlanePlayer : MonoBehaviour
         rb.AddForce(vel);
         if (rb.velocity.x > maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
+        
+        InmuneBehaviour();
+    }
+    /// <summary>
+    /// Comportamiento de fisicas de vuelo
+    /// </summary>
+    protected void FlyingBehaviour()
+    {
+        if (rb.velocity.y <= 0.01f)
+        {
+
+        }
+    }
+    protected void InmuneBehaviour()
+    {
+        if (passingTime < inmuneTime)
+        {
+            passingTime += Time.deltaTime;
+            playerInmune = true;
+            bc.enabled = false;
+        }
+        else
+        {
+            bc.enabled = true;
+            playerInmune = false;
+        }
+    }
+    public void UpdatePassingTime()
+    {
+        passingTime = 0;
+    }
+
+    public bool checkIsInmune()
+    {
+        if (playerInmune)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

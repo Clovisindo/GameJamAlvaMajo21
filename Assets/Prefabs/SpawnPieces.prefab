@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 608684465020276523}
   - component: {fileID: 608684465020276502}
+  - component: {fileID: -3709160272553101782}
   m_Layer: 5
   m_Name: SpawnPieces
   m_TagString: PuzzlePiece
@@ -44,3 +45,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608684465020276522}
   m_CullTransparentMesh: 0
+--- !u!114 &-3709160272553101782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608684465020276522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1fa80bd9215854d9460cb3c64e3e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlayerHeight: {fileID: 0}

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.UI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     public GameObject gameCamera;
     public GameObject player;
+    public measureToolLevel mTool;
 
     int layer_mask_wall;
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
         gameCamera = GameObject.FindGameObjectWithTag("MainCamera");
         layer_mask_wall = LayerMask.GetMask("ColliderRoomDetector");
         player = GameObject.FindGameObjectWithTag("Player");
+        mTool = new measureToolLevel();
     }
 
     // Update is called once per frame
