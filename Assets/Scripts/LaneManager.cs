@@ -18,8 +18,7 @@ public class LaneManager : MonoBehaviour
     private GameObject PieceDownPrefab;
     [SerializeField]
     private GameObject RespawnPieces;
-    [SerializeField]
-    private Canvas canvasLevel;
+    private GameObject canvasLevel;
 
 
     LevelPiece[] laneLevelPieces ;
@@ -27,6 +26,7 @@ public class LaneManager : MonoBehaviour
 
     private void Awake()
     {
+        canvasLevel = GameObject.FindGameObjectWithTag("CanvasLevel");
         laneLevelPieces = new LevelPiece[totalPieces];
         int randTypeIndex = 0;
         for (int i = 0; i < totalPieces; i++)

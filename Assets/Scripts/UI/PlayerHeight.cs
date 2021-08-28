@@ -19,7 +19,7 @@ namespace Assets.Scripts.UI
 
         private void Awake()
         {
-            initialHeightPosition = initialHeightPosition;
+            
         }
 
         // Update is called once per frame

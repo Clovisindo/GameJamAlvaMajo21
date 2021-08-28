@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231637179966434860}
   - component: {fileID: 7655062835967376955}
+  - component: {fileID: 1026971188}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,3 +45,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 0}
+  player: {fileID: 0}
+  mTool: {fileID: 0}
+--- !u!114 &1026971188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179345404763229279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c004c8a2c98d0459fc2b419ea56e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRatePerMinute: 30
+  PieceUpPrefab: {fileID: 8565585939978468019, guid: 93c6ac18efa6b6745bae56bb70ce6b19, type: 3}
+  PieceDownPrefab: {fileID: 4035917879150361290, guid: 9dd1ea8dc1157b246ac10825eda6bb4d, type: 3}
+  RespawnPieces: {fileID: 608684465020276522, guid: 47e5d5e05186b04468fdc771e141ae7c, type: 3}
+  canvasLevel: {fileID: 0}
