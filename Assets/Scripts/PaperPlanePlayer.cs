@@ -51,6 +51,15 @@ public class PaperPlanePlayer : MonoBehaviour
         rb.AddForce(vel);
     }
 
+    public void actionFallingFree()
+    {
+        Vector2 velFalling = transform.up * (-1) * (rb.velocity.y);
+        rb.AddForce(velFalling);
+        Vector2 vel = transform.up * (-1) * (100f);
+        rb.AddForce(vel);
+        
+    }
+
     private void FixedUpdate()
     {
         //velocidad constante hacia adelante
@@ -59,9 +68,7 @@ public class PaperPlanePlayer : MonoBehaviour
         if (rb.velocity.x > maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
         
-        
         InmuneBehaviour();
-
     }
     /// <summary>
     /// Comportamiento de fisicas de vuelo
