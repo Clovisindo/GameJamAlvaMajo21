@@ -9,6 +9,8 @@ namespace Assets.Scripts.Enums
     public enum EnumTypePuzzlePiece
     {
         pieceUp,
-        PieceDown
+        PieceDown,
+        PieceInverseAir,
+        PieceBalloonSlow
     }
 }

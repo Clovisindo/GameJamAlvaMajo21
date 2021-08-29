@@ -17,6 +17,10 @@ public class LaneManager : MonoBehaviour
     [SerializeField]
     private GameObject PieceDownPrefab;
     [SerializeField]
+    private GameObject PieceInverseAirPrefab;
+    [SerializeField]
+    private GameObject PieceBalloonSlowPrefab;
+    [SerializeField]
     private GameObject RespawnPieces;
     private GameObject canvasLevel;
 
@@ -75,6 +79,14 @@ public class LaneManager : MonoBehaviour
         {
             return PieceDownPrefab;
         }
+        if (typePiece == EnumTypePuzzlePiece.PieceBalloonSlow)
+        {
+            return PieceBalloonSlowPrefab;
+        }
+        if (typePiece == EnumTypePuzzlePiece.PieceInverseAir)
+        {
+            return PieceInverseAirPrefab;
+        }
         return null;
     }
 
@@ -87,6 +99,14 @@ public class LaneManager : MonoBehaviour
         if (randTypeIndex == 2)
         {
             return EnumTypePuzzlePiece.PieceDown;
+        }
+        if (randTypeIndex == 3)
+        {
+            return EnumTypePuzzlePiece.PieceBalloonSlow;
+        }
+        if (randTypeIndex == 4)
+        {
+            return EnumTypePuzzlePiece.PieceInverseAir;
         }
         return 0;
     }

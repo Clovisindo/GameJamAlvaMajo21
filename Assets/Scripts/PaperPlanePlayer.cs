@@ -59,9 +59,30 @@ public class PaperPlanePlayer : MonoBehaviour
         rb.AddForce(vel);
         
     }
+
+    public void actionInverseAcelerationc()
+    {
+        float prevAccel = rb.velocity.y;
+        if (prevAccel <= -1)
+        {
+            Vector2 velRising = transform.up * (prevAccel);
+            rb.AddForce(velRising);
+        }
+        else
+        {
+            Vector2 velRising = transform.up * 50F;
+            rb.AddForce(velRising);
+        }
+    }
     public void actionCleanHazards()
     {
        //ToDo: gestion limpiar estados
+    }
+
+    public void actionSlowBalloon()
+    {
+        Vector2 velSlow = transform.forward * -20f;
+        rb.AddForce(velSlow);
     }
 
     private void FixedUpdate()
