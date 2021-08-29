@@ -62,5 +62,6 @@ MonoBehaviour:
   spawnRatePerMinute: 30
   PieceUpPrefab: {fileID: 8565585939978468019, guid: 93c6ac18efa6b6745bae56bb70ce6b19, type: 3}
   PieceDownPrefab: {fileID: 4035917879150361290, guid: 9dd1ea8dc1157b246ac10825eda6bb4d, type: 3}
+  PieceInverseAirPrefab: {fileID: 6816626332267508657, guid: e0267c38fc29306429827b2ce83ed759, type: 3}
+  PieceBalloonSlowPrefab: {fileID: 8666379143862099235, guid: 949aa89595db5d64f85268e0a57fa667, type: 3}
   RespawnPieces: {fileID: 608684465020276522, guid: 47e5d5e05186b04468fdc771e141ae7c, type: 3}
-  canvasLevel: {fileID: 0}
