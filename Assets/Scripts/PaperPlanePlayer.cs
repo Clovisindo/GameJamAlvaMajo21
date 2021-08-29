@@ -59,6 +59,10 @@ public class PaperPlanePlayer : MonoBehaviour
         rb.AddForce(vel);
         
     }
+    public void actionCleanHazards()
+    {
+       //ToDo: gestion limpiar estados
+    }
 
     private void FixedUpdate()
     {
