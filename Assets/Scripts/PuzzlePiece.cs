@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Enums;
+using Assets.Scripts.ScoreManager;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,15 +13,23 @@ public abstract class PuzzlePiece : MonoBehaviour
     private bool puzzlePieceInmune;
     private CircleCollider2D colliderPP;
     private KeyCode keyPuzzlePiece = KeyCode.Space;
+    private int score = 100;
 
     protected const float inmuneTime = 2.0f;
     protected float passingTime = inmuneTime;
     protected bool enemyInmune = false;
+    protected EnumTypePuzzlePiece typePP = EnumTypePuzzlePiece.PieceDown;
 
     public KeyCode KeyPuzzlePiece { get => keyPuzzlePiece; set => keyPuzzlePiece = value; }
+    public int Score { get => score; set => score = value; }
 
     // Start is called before the first frame update
-    protected virtual void Start()
+    protected virtual void Awake()
+    {
+       
+    }
+
+    public void awakeBehaviour()
     {
         pieceTempo = pieceTempo / 60f;
         colliderPP = this.GetComponent<CircleCollider2D>();
@@ -49,6 +59,12 @@ public abstract class PuzzlePiece : MonoBehaviour
         passingTime = 0;
     }
     protected abstract void ActiveAction();
+
+    public virtual void ApplyScorePiecePuzzle(int score, EnumTypePuzzlePiece typePP)
+    {
+        ScoreManager.instance.AddScore(score);
+        ScoreManager.instance.ApplyMultiplier(typePP);
+    }
 
     protected void InmuneBehaviour()
     {
