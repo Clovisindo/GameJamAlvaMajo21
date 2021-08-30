@@ -16,7 +16,11 @@ public class PaperPlanePlayer : MonoBehaviour
     protected float passingTime = inmuneTime;
     protected bool enemyInmune = false;
 
+    [SerializeField]
+    private int levelHazards = 0;//maximo 3 
+    private float hazardSlow = 0;
     public float rotationControl;
+
 
     float movY, movX = 1;
 
@@ -76,7 +80,20 @@ public class PaperPlanePlayer : MonoBehaviour
     }
     public void actionCleanHazards()
     {
-       //ToDo: gestion limpiar estados
+        if (levelHazards > 0)
+        {
+            levelHazards--;
+        }
+        ApplyHazards(levelHazards);
+    }
+
+    public void actionApplyHazards()
+    {
+        if (levelHazards >= 0 && levelHazards < 3)
+        {
+            levelHazards++;
+        }
+        ApplyHazards(levelHazards);
     }
 
     public void actionSlowBalloon()
@@ -87,12 +104,7 @@ public class PaperPlanePlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //velocidad constante hacia adelante
-        Vector2 vel = transform.right * (movX * acceleration);
-        rb.AddForce(vel);
-        if (rb.velocity.x > maxSpeed)
-            rb.velocity = rb.velocity.normalized * maxSpeed;
-        
+        FlyingBehaviour();
         InmuneBehaviour();
     }
     /// <summary>
@@ -100,11 +112,29 @@ public class PaperPlanePlayer : MonoBehaviour
     /// </summary>
     protected void FlyingBehaviour()
     {
-        if (rb.velocity.y <= 0.01f)
+        if (hazardSlow != 0)
         {
-
+            //aplica slow hasta la velocidad definida
+            rb.velocity = Vector2.Lerp(new Vector2(hazardSlow, rb.velocity.y), transform.right * (movX * acceleration), Time.deltaTime/30);
         }
+        else
+        {
+            //velocidad constante hacia adelante
+            Vector2 vel = transform.right * (movX * acceleration);
+            rb.AddForce(vel);
+        }
+       
+        
+        if (rb.velocity.x > maxSpeed)
+            rb.velocity = rb.velocity.normalized * maxSpeed;
+
+        //if (rb.velocity.y <= 0.01f)
+        //{
+
+        //}
     }
+
+    
     protected void InmuneBehaviour()
     {
         if (passingTime < inmuneTime)
@@ -119,6 +149,51 @@ public class PaperPlanePlayer : MonoBehaviour
             playerInmune = false;
         }
     }
+    protected void ApplyHazards(int levelHazards)
+    {
+        switch (levelHazards)
+        {
+            default:
+                hazardSlow = 0;
+                break;
+            case 1:
+                hazardSlow = 4f;
+                break;
+            case 2:
+                hazardSlow = 3f;
+                break;
+            case 3:
+                hazardSlow =2f;
+                break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        CheckCurrentPPColl(other);
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        CheckCurrentPPColl(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        CheckCurrentPPColl(other);
+    }
+
+    private void CheckCurrentPPColl(Collider2D other)
+    {
+        PuzzlePiece currentPP = other.gameObject.GetComponent<PuzzlePiece>();
+        if (other.gameObject.tag == "PieceLevel" && (!currentPP.checkIsInmune()))
+        {
+            GameObject puzzlePieceColl = other.gameObject;
+            //other.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            currentPP.Active();
+            Debug.Log("efecto pieza activado");
+        }
+    }
+
     public void UpdatePassingTime()
     {
         passingTime = 0;
