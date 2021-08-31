@@ -28,20 +28,11 @@ public class LaneManager : MonoBehaviour
     LevelPiece[] laneLevelPieces ;
     int iteratorPieces = 0;
 
-    private void Awake()
+    private void Start()
     {
         canvasLevel = GameObject.FindGameObjectWithTag("CanvasLevel");
-        laneLevelPieces = new LevelPiece[totalPieces];
-        int randTypeIndex = 0;
-        for (int i = 0; i < totalPieces; i++)
-        {
-            randTypeIndex = UnityEngine.Random.Range(1, Enum.GetNames(typeof(EnumTypePuzzlePiece)).Length + 1);//modificar si se meten mas tipos piezas
-            EnumTypePuzzlePiece newTypeRandom = GetTypePieceByRandom(randTypeIndex);
-            laneLevelPieces[i] = new LevelPiece(newTypeRandom, false);
-        }
+        InitializeLaneManager();
     }
-
-   
 
     /// <summary>
     /// Unity's method called every frame
@@ -66,6 +57,26 @@ public class LaneManager : MonoBehaviour
                 iteratorPieces++;
             }
             
+        }
+    }
+    public void InitializeLaneManager()
+    {
+        laneLevelPieces = new LevelPiece[totalPieces];
+        int randTypeIndex = 0;
+        for (int i = 0; i < totalPieces; i++)
+        {
+            randTypeIndex = UnityEngine.Random.Range(1, Enum.GetNames(typeof(EnumTypePuzzlePiece)).Length + 1);//modificar si se meten mas tipos piezas
+            EnumTypePuzzlePiece newTypeRandom = GetTypePieceByRandom(randTypeIndex);
+            laneLevelPieces[i] = new LevelPiece(newTypeRandom, false);
+        }
+    }
+
+    public void DestroyAllPieces()
+    {
+        var destroyPPs = GameObject.FindGameObjectsWithTag("PuzzlePiece");
+        foreach (var destroyPP in destroyPPs)
+        {
+            Destroy(destroyPP);
         }
     }
 

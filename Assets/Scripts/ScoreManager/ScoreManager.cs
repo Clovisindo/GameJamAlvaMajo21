@@ -67,5 +67,14 @@ namespace Assets.Scripts.ScoreManager
             multiplier = newMultiplier;
             currentMultiScoreUI.text = "Combo :" + multiplier.ToString();
         }
+
+        public void ResetScore()
+        {
+            multiplier = 1;
+            currentScore = 0;
+            UpdateCurrentScore();
+            UpdateMultiplier(0);
+
+        }
     }
 }
