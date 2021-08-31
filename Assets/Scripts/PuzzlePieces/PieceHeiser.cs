@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.PuzzlePieces
 {
@@ -10,6 +11,7 @@ namespace Assets.Scripts.PuzzlePieces
     {
         protected override void Awake()
         {
+            KeyPuzzlePiece = KeyCode.C;
             typePP = Enums.EnumTypePuzzlePiece.PieceInverseAir;
             awakeBehaviour();
         }

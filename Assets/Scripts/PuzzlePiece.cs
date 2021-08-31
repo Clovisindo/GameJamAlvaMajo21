@@ -12,7 +12,7 @@ public abstract class PuzzlePiece : MonoBehaviour
     public bool hasStarted = false;
     private bool puzzlePieceInmune;
     private CircleCollider2D colliderPP;
-    private KeyCode keyPuzzlePiece = KeyCode.Space;
+    private KeyCode keyPuzzlePiece;
     private int score = 100;
 
     protected const float inmuneTime = 2.0f;

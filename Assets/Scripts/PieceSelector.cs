@@ -9,7 +9,12 @@ public class PieceSelector : MonoBehaviour
     public Texture2D defaultImage;
     public Texture2D pressedImage;
 
-    public KeyCode keyToPress;
+    public KeyCode keyToPressZ = KeyCode.Z;
+    public KeyCode keyToPressX = KeyCode.X;
+    public KeyCode keyToPressC = KeyCode.C;
+    public KeyCode keyToPressV = KeyCode.V;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +25,12 @@ public class PieceSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(keyToPress))//añadir aqui todas las teclas disponibles para todas las piezas
+        if (Input.GetKeyDown(keyToPressZ) || Input.GetKeyDown(keyToPressX) || Input.GetKeyDown(keyToPressC) || Input.GetKeyDown(keyToPressV))
         {
             sr.texture = pressedImage;
         }
 
-        if (Input.GetKeyUp(keyToPress))
+        if (Input.GetKeyUp(keyToPressZ) || Input.GetKeyUp(keyToPressX) || Input.GetKeyUp(keyToPressC) || Input.GetKeyUp(keyToPressV))
         {
             sr.texture = defaultImage;
         }
@@ -33,14 +38,14 @@ public class PieceSelector : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(other.gameObject.GetComponent<PuzzlePiece>().KeyPuzzlePiece))
         {
             CheckCurrentPPColl(other);
         }
     }
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(other.gameObject.GetComponent<PuzzlePiece>().KeyPuzzlePiece))
         {
             CheckCurrentPPColl(other);
         }
@@ -48,7 +53,7 @@ public class PieceSelector : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(other.gameObject.GetComponent<PuzzlePiece>().KeyPuzzlePiece))
         {
             CheckCurrentPPColl(other);
         }
