@@ -11,6 +11,8 @@ namespace Assets.Scripts.Enums
         pieceUp,
         PieceDown,
         PieceInverseAir,
-        PieceBalloonSlow
+        PieceBalloonSlow,
+        PieceLevelCloud,
+        PieceLevelSun
     }
 }

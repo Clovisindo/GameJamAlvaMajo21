@@ -8,6 +8,8 @@ TagManager:
   - Activator
   - CanvasLevel
   - PieceLevel
+  - ScoreText
+  - MultiplierText
   layers:
   - Default
   - TransparentFX
