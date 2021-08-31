@@ -20,9 +20,12 @@ public class PaperPlanePlayer : MonoBehaviour
     private int levelHazards = 0;//maximo 3 
     private float hazardSlow = 0;
     public float rotationControl;
+    private bool playerDeath = false;
 
 
     float movY, movX = 1;
+
+    public bool PlayerDeath { get => playerDeath; set => playerDeath = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -104,8 +107,11 @@ public class PaperPlanePlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        FlyingBehaviour();
-        InmuneBehaviour();
+        if (!playerDeath)
+        {
+            FlyingBehaviour();
+            InmuneBehaviour();
+        }
     }
     /// <summary>
     /// Comportamiento de fisicas de vuelo
@@ -209,5 +215,17 @@ public class PaperPlanePlayer : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = new Vector2(0, 0);
+        rb.velocity = new Vector2(0, 0);
+    }
+
+    public void StopPlayer()
+    {
+        rb.velocity = new Vector2(0, 0);
+        playerDeath = true;
     }
 }

@@ -26,7 +26,8 @@ namespace Assets.Scripts.LevelManager
         {
             if (other.gameObject.tag == "Player" && (!other.gameObject.GetComponent<PaperPlanePlayer>().checkIsInmune()))
             {
-                other.gameObject.GetComponent<PaperPlanePlayer>().actionFallingFree();//ToDO:Crear accion caida, no usar la de la pieza
+                GameManager.instance.SceneGameEnded();
+                //other.gameObject.GetComponent<PaperPlanePlayer>().actionFallingFree();//ToDO:Crear accion caida, no usar la de la pieza
                 other.gameObject.GetComponent<PaperPlanePlayer>().UpdatePassingTime();//ToDo: esto deberia implementarse en otra logica interna dentro de las acciones que puede sufrir el jugador
                 Debug.Log("Partida terminada");//ToDo: crear final de partida
             }
