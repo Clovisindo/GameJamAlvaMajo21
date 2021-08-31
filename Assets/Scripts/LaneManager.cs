@@ -11,7 +11,7 @@ public class LaneManager : MonoBehaviour
     [SerializeField]
     private float spawnRatePerMinute = 30;//spawnRate
     private int currentCount = 0;// Current spawn count
-    private int totalPieces = 50;
+    private int totalPieces = 200;
     [SerializeField]
     private GameObject PieceUpPrefab;
     [SerializeField]

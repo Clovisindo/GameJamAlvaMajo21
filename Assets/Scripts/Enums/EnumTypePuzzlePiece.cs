@@ -13,6 +13,7 @@ namespace Assets.Scripts.Enums
         PieceInverseAir,
         PieceBalloonSlow,
         PieceLevelCloud,
-        PieceLevelSun
+        PieceLevelSun,
+        PiecelLevelCoin
     }
 }
