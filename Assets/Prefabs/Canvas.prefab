@@ -664,5 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 2800000, guid: 22daf53a5ba47a240a60176ca1bb6e5d, type: 3}
   pressedImage: {fileID: 2800000, guid: 801344f66bc6523499be278d1f1c3b1b, type: 3}
-  keyToPress: 32
-  keystring: joystick button 0
+  keyToPressZ: 122
+  keyToPressX: 120
+  keyToPressC: 99
+  keyToPressV: 118
