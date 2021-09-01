@@ -23,6 +23,8 @@ public class PaperPlanePlayer : MonoBehaviour
     private bool playerDeath = false;
 
 
+    public AudioClip landingEarthClip;
+
     float movY, movX = 1;
 
     public bool PlayerDeath { get => playerDeath; set => playerDeath = value; }
@@ -80,6 +82,7 @@ public class PaperPlanePlayer : MonoBehaviour
             Vector2 velRising = transform.up * 50F;
             rb.AddForce(velRising);
         }
+
     }
     public void actionCleanHazards()
     {
@@ -225,6 +228,7 @@ public class PaperPlanePlayer : MonoBehaviour
 
     public void StopPlayer()
     {
+        SoundManager.instance.PlaySingle(landingEarthClip);
         rb.velocity = new Vector2(0, 0);
         playerDeath = true;
     }

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.PuzzlePieces
 {
     class PieceLevelSun:PuzzlePiece
     {
+        public AudioClip sunClip;
+
         protected override void Awake()
         {
             typePP = Enums.EnumTypePuzzlePiece.PieceLevelSun;
@@ -18,6 +21,7 @@ namespace Assets.Scripts.PuzzlePieces
         /// </summary>
         protected override void ActiveAction()
         {
+            SoundManager.instance.PlaySingle(sunClip);
             GameManager.instance.player.GetComponent<PaperPlanePlayer>().actionCleanHazards();
             //ApplyScorePiecePuzzle(Score, typePP);
         }
