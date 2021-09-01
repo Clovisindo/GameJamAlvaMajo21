@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     public void DisableTestReset()
     {
         textRestartGame.enabled = false;
-        textRestartGame.text = "Pulsa F para volver a empezar.";
+        textRestartGame.text = "Perdiste!,Pulsa F para volver a empezar.";
     }
 
     public void SceneGameEnded()
