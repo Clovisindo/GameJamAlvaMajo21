@@ -113,5 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceTempo: 0
-  lifeTime: 60
+  lifeTime: 360
   hasStarted: 1
+  rainClip: {fileID: 8300000, guid: a0fa0317708c1814191bd6c9f958ed72, type: 3}

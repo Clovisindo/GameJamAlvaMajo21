@@ -23,6 +23,8 @@ public class PaperPlanePlayer : MonoBehaviour
     private bool playerDeath = false;
 
 
+    public AudioClip landingEarthClip;
+
     float movY, movX = 1;
 
     public bool PlayerDeath { get => playerDeath; set => playerDeath = value; }
@@ -48,7 +50,7 @@ public class PaperPlanePlayer : MonoBehaviour
 
     public void actionJumpSingle()
     {
-        Vector2 vel = transform.up * (100f);
+        Vector2 vel = transform.up * (200f);
         rb.AddForce(vel);
     }
 
@@ -77,9 +79,16 @@ public class PaperPlanePlayer : MonoBehaviour
         }
         else
         {
-            Vector2 velRising = transform.up * 50F;
+            Vector2 velRising = transform.up * 150F;
             rb.AddForce(velRising);
         }
+
+        if (levelHazards > 0)
+        {
+            levelHazards--;
+        }
+        ApplyHazards(levelHazards);
+
     }
     public void actionCleanHazards()
     {
@@ -103,6 +112,11 @@ public class PaperPlanePlayer : MonoBehaviour
     {
         Vector2 velSlow = transform.forward * -20f;
         rb.AddForce(velSlow);
+        if (levelHazards >= 0 && levelHazards < 3)
+        {
+            levelHazards++;
+        }
+        ApplyHazards(levelHazards);
     }
 
     private void FixedUpdate()
@@ -225,6 +239,7 @@ public class PaperPlanePlayer : MonoBehaviour
 
     public void StopPlayer()
     {
+        SoundManager.instance.PlaySingle(landingEarthClip);
         rb.velocity = new Vector2(0, 0);
         playerDeath = true;
     }

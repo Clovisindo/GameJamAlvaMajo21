@@ -63,11 +63,19 @@ public class GameManager : MonoBehaviour
     public void DisableTestReset()
     {
         textRestartGame.enabled = false;
+        textRestartGame.text = "Pulsa F para volver a empezar.";
     }
 
     public void SceneGameEnded()
     {
         player.GetComponent<PaperPlanePlayer>().StopPlayer();
+        EnableTestReset();
+    }
+
+    public void SceneGameWin()
+    {
+        player.GetComponent<PaperPlanePlayer>().StopPlayer();
+        textRestartGame.text = "Victoria, aterrizaje completado.";
         EnableTestReset();
     }
     public void reGame()

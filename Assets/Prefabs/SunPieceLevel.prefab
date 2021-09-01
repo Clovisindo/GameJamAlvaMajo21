@@ -97,8 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceTempo: 0
-  lifeTime: 60
+  lifeTime: 360
   hasStarted: 1
+  sunClip: {fileID: 8300000, guid: d8136072c7dbf0b419183045eebca1b7, type: 3}
 --- !u!58 &7431247797860399019
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class PieceSelector : MonoBehaviour
     public Texture2D defaultImage;
     public Texture2D pressedImage;
 
+    public AudioClip pieceActiveClip;
+
     public KeyCode keyToPressZ = KeyCode.Z;
     public KeyCode keyToPressX = KeyCode.X;
     public KeyCode keyToPressC = KeyCode.C;
@@ -68,6 +70,7 @@ public class PieceSelector : MonoBehaviour
             GameObject puzzlePieceColl = other.gameObject;
             //other.gameObject.GetComponent<CircleCollider2D>().enabled = false;
             currentPP.Active();
+            SoundManager.instance.PlaySingle(pieceActiveClip);
             Debug.Log("efecto pieza activado");
         }
     }
